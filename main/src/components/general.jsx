@@ -1,11 +1,15 @@
+import "../index.css";
 import "../styles/general.css";
 
 
 
 export default function General({ generalInfo, setGeneralInfo }) {
+    function handleSubmit(e) {
+        e.preventDefault();
+    }
     return (
         <>
-            <form className="general-form">
+            <form className="general-form" onSubmit={handleSubmit}>
                 <fieldset>
                     <legend>General Information</legend>
                     <label htmlFor="name">Name</label>
@@ -35,6 +39,7 @@ export default function General({ generalInfo, setGeneralInfo }) {
                            }
                            type="tel" placeholder="00123456789" minLength={10} maxLength={15} />
                 </fieldset>
+                <button type="submit">Submit</button>
             </form>
         </>
     )
