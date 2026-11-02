@@ -2,6 +2,7 @@ import { useState } from 'react'
 import General from "./components/general.jsx";
 import Education from "./components/education.jsx";
 import Experience from "./components/experience.jsx";
+import Output from "./components/output.jsx";
 import './App.css'
 
 function App() {
@@ -24,14 +25,17 @@ function App() {
         responsibilities: "",
         start: "",
         end: ""
-    })
+    });
+
+    let [displayed, setDisplayed] = useState(false);
 
   return (
       <>
         <General generalInfo={generalInfo} setGeneralInfo={setGeneralInfo}></General>
         <Education eduInfo={eduInfo} setEduInfo={setEduInfo} />
         <Experience expInfo={expInfo} setExpInfo={setExpInfo} />
-
+        <button onClick={() => setDisplayed(true)}>Generate CV</button>
+        {displayed && <Output generalInfo={generalInfo} eduInfo={eduInfo} expInfo={expInfo}/>}
       </>
   )
 

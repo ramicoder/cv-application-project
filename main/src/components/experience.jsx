@@ -37,6 +37,7 @@ export default function Experience({ expInfo, setExpInfo }) {
                                })
                            }
                            disabled={disabled} type="text" minLength={10} maxLength={200}/>
+                    <label htmlFor="start-date">Start date</label>
                     <input value={expInfo.start} id="start-date" aria-labelledby="starting date"
                            onChange={(e) =>
                                setExpInfo({
@@ -45,6 +46,7 @@ export default function Experience({ expInfo, setExpInfo }) {
                                })
                            }
                            disabled={disabled} type="month"/>
+                    <label htmlFor="end-date">End date</label>
                     <input value={expInfo.end} id="end-date" aria-labelledby="ending date"
                            onChange={(e) =>
                                setExpInfo({
