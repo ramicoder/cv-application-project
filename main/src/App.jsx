@@ -31,6 +31,7 @@ function App() {
         <General generalInfo={generalInfo} setGeneralInfo={setGeneralInfo}></General>
         <Education eduInfo={eduInfo} setEduInfo={setEduInfo} />
         <Experience expInfo={expInfo} setExpInfo={setExpInfo} />
+
       </>
   )
 

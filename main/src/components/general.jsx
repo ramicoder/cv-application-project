@@ -1,15 +1,15 @@
 import "../index.css";
 import "../styles/general.css";
+import {useState} from "react";
 
 
 
 export default function General({ generalInfo, setGeneralInfo }) {
-    function handleSubmit(e) {
-        e.preventDefault();
-    }
+
+    const [disabled, setDisabled] = useState(false);
     return (
         <>
-            <form className="general-form" onSubmit={handleSubmit}>
+            <form className="general-form" onSubmit={(e) => e.preventDefault()}>
                 <fieldset>
                     <legend>General Information</legend>
                     <label htmlFor="name">Name</label>
@@ -19,7 +19,9 @@ export default function General({ generalInfo, setGeneralInfo }) {
                                    ...generalInfo,
                                    name: e.target.value
                                })
-                           } type="text" aria-labelledby="name" placeholder="John Doe" />
+                           }
+                           disabled={disabled}
+                           type="text" aria-labelledby="name" placeholder="John Doe" />
                     <label htmlFor="email">Email</label>
                     <input value={generalInfo.email} id="email" aria-labelledby="email"
                            onChange={(e) =>
@@ -28,6 +30,7 @@ export default function General({ generalInfo, setGeneralInfo }) {
                                    email: e.target.value
                                })
                            }
+                           disabled={disabled}
                            type="email" placeholder="johnDoe@gmail.com" />
                     <label htmlFor="phone">Phone Number</label>
                     <input value={generalInfo.phone} id="phone" aria-labelledby="Phone Number"
@@ -37,9 +40,12 @@ export default function General({ generalInfo, setGeneralInfo }) {
                                    phone: e.target.value
                                })
                            }
+                           disabled={disabled}
                            type="tel" placeholder="00123456789" minLength={10} maxLength={15} />
                 </fieldset>
-                <button type="submit">Submit</button>
+                <button type="submit" onClick={() => setDisabled(true)
+                } disabled={disabled} >Submit</button>
+                <button onClick={() => setDisabled(false)} >Edit</button>
             </form>
         </>
     )

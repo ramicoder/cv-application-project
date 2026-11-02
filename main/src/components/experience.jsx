@@ -1,15 +1,14 @@
 import "../index.css";
 import "../styles/experience.css";
+import {useState} from "react";
 
 
 
 export default function Experience({ expInfo, setExpInfo }) {
-    function handleSubmit(e) {
-        e.preventDefault();
-    }
+    const [disabled, setDisabled] = useState(false);
     return (
         <>
-            <form className="exp-form" onSubmit={handleSubmit}>
+            <form className="exp-form" onSubmit={(e) => e.preventDefault()}>
                 <fieldset>
                     <legend>Experience</legend>
                     <label htmlFor="company">Company</label>
@@ -19,7 +18,7 @@ export default function Experience({ expInfo, setExpInfo }) {
                                    ...expInfo,
                                    company: e.target.value
                                })
-                           } type="text" aria-labelledby="company" placeholder="Amazon" />
+                           } disabled={disabled} type="text" aria-labelledby="company" placeholder="Amazon" />
                     <label htmlFor="role">Role</label>
                     <input value={expInfo.role} id="role" aria-labelledby="role"
                            onChange={(e) =>
@@ -28,7 +27,7 @@ export default function Experience({ expInfo, setExpInfo }) {
                                    role: e.target.value
                                })
                            }
-                           type="text" placeholder="Junior Backend Software Engineer" minLength={2} maxLength={50}/>
+                           disabled={disabled} type="text" placeholder="Junior Backend Software Engineer" minLength={2} maxLength={50}/>
                     <label htmlFor="responsibilities">Responsibilities</label>
                     <input value={expInfo.responsibilities} id="responsibilities" aria-labelledby="responsibilities"
                            onChange={(e) =>
@@ -37,7 +36,7 @@ export default function Experience({ expInfo, setExpInfo }) {
                                    responsibilities: e.target.value
                                })
                            }
-                           type="text" minLength={10} maxLength={200}/>
+                           disabled={disabled} type="text" minLength={10} maxLength={200}/>
                     <input value={expInfo.start} id="start-date" aria-labelledby="starting date"
                            onChange={(e) =>
                                setExpInfo({
@@ -45,7 +44,7 @@ export default function Experience({ expInfo, setExpInfo }) {
                                    start: e.target.value
                                })
                            }
-                           type="month"/>
+                           disabled={disabled} type="month"/>
                     <input value={expInfo.end} id="end-date" aria-labelledby="ending date"
                            onChange={(e) =>
                                setExpInfo({
@@ -53,9 +52,10 @@ export default function Experience({ expInfo, setExpInfo }) {
                                    end: e.target.value
                                })
                            }
-                           type="month"/>
+                           disabled={disabled} type="month"/>
                 </fieldset>
-                <button type="submit">Submit</button>
+                <button type="submit" onClick={() => setDisabled(true)} disabled={disabled} >Submit</button>
+                <button onClick={() => setDisabled(false)} >Edit</button>
             </form>
         </>
     )
