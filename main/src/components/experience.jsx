@@ -4,11 +4,18 @@ import {useState} from "react";
 
 
 
-export default function Experience({ expInfo, setExpInfo, dataSubmitted, setDataSubmitted, displayed, setDisplayed }) {
+export default function Experience({ expInfo, setExpInfo, dataSubmitted, setDataSubmitted, setDisplayed }) {
     const [disabled, setDisabled] = useState(false);
+
     return (
         <>
-            <form className="exp-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="exp-form" onSubmit={(e) => {
+                e.preventDefault();
+                setDisabled(true);
+                setDataSubmitted(dataSubmitted + 1);
+                setDisplayed(false);
+
+            }}>
                 <fieldset>
                     <legend>Experience</legend>
                     <label htmlFor="company">Company</label>
@@ -29,14 +36,14 @@ export default function Experience({ expInfo, setExpInfo, dataSubmitted, setData
                            }
                            disabled={disabled} type="text" placeholder="Junior Backend Software Engineer" minLength={2} maxLength={50}/>
                     <label htmlFor="responsibilities">Responsibilities</label>
-                    <input value={expInfo.responsibilities} id="responsibilities" aria-labelledby="responsibilities"
+                    <textarea value={expInfo.responsibilities} id="responsibilities" aria-labelledby="responsibilities"
                            onChange={(e) =>
                                setExpInfo({
                                    ...expInfo,
                                    responsibilities: e.target.value
                                })
                            }
-                           disabled={disabled} type="text" minLength={10} maxLength={200}/>
+                              disabled={disabled} maxLength={200}> </textarea>
                     <label htmlFor="start-date">Start date</label>
                     <input value={expInfo.start} id="start-date" aria-labelledby="starting date"
                            onChange={(e) =>
@@ -56,11 +63,7 @@ export default function Experience({ expInfo, setExpInfo, dataSubmitted, setData
                            }
                            disabled={disabled} type="month"/>
                 </fieldset>
-                <button type="submit" onClick={() => {
-                    setDisabled(true);
-                    setDataSubmitted(dataSubmitted + 1);
-                    setDisplayed(false);
-                }} disabled={disabled} >Submit</button>
+                <button type="submit" disabled={disabled} >Submit</button>
                 <button onClick={() => {
                     setDisabled(false);
                     setDataSubmitted(dataSubmitted - 1);

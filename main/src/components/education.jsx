@@ -4,12 +4,17 @@ import {useState} from "react";
 
 
 
-export default function Education({ eduInfo, setEduInfo, dataSubmitted, setDataSubmitted, displayed, setDisplayed }) {
+export default function Education({ eduInfo, setEduInfo, dataSubmitted, setDataSubmitted, setDisplayed }) {
 
     const [disabled, setDisabled] = useState(false);
     return (
         <>
-            <form className="edu-form" onSubmit={(e) => e.preventDefault()}>
+            <form className="edu-form" onSubmit={(e) => {
+                e.preventDefault();
+                setDisabled(true);
+                setDataSubmitted(dataSubmitted + 1);
+                setDisplayed(false);
+            }}>
                 <fieldset>
                     <legend>Education</legend>
                     <label htmlFor="institution">Institution</label>
@@ -37,13 +42,15 @@ export default function Education({ eduInfo, setEduInfo, dataSubmitted, setDataS
                                    graduation: e.target.value
                                })
                            }
-                           disabled={disabled} type="date"/>
+                           disabled={disabled} type="month"/>
+                    <label htmlFor="expected">Expected</label>
+                    <input type="checkbox" value={eduInfo.expected} id="expected" aria-labelledby="expected graduation date"
+                    onChange={(e) => setEduInfo({
+                        ...eduInfo,
+                        expected: e.target.value
+                    })}/>
                 </fieldset>
-                <button type="submit" onClick={() => {
-                    setDisabled(true);
-                    setDataSubmitted(dataSubmitted + 1);
-                    setDisplayed(false);
-                }} disabled={disabled} >Submit</button>
+                <button type="submit"  disabled={disabled} >Submit</button>
                 <button onClick={() => {
                     setDisabled(false);
                     setDataSubmitted(dataSubmitted - 1);

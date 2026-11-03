@@ -9,16 +9,17 @@ export default function Output({ generalInfo, eduInfo, expInfo }) {
                 <h1>General</h1>
                 <p>
                     Name: {generalInfo.name} <br></br>
-                    Email: {generalInfo.email} <br></br>
-                    Phone: {generalInfo.phone} <br></br>
+                    {generalInfo.email === "" ? "Email: None" : `Email: ${generalInfo.email}`}<br></br>
+                    {generalInfo.phone === ""? "Phone: None" : `Phone: ${generalInfo.phone}`} <br></br>
                 </p>
             </section>
             <section className="edu-section">
-                <h1>Education</h1>
+                <h1>{eduInfo.institution === "" ? "Education: None" : "Education"}</h1>
                 <p>
-                    Institution: {eduInfo.institution} <br></br>
-                    Degree: {eduInfo.degree} <br></br>
-                    Graduation Date: {eduInfo.graduation} <br></br>
+                    {eduInfo.institution === "" ? "" : `Institution: ${eduInfo.institution}`}<br></br>
+                    {eduInfo.institution === "" ? "" : `Degree: {eduInfo.degree}`} <br></br>
+                    {eduInfo.institution === "" ? "" :  `Graduation Date: ${eduInfo.graduation}`} <br></br>
+
                 </p>
             </section>
             <section className="exp-section">

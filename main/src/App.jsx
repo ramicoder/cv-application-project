@@ -17,7 +17,8 @@ function App() {
     let [eduInfo, setEduInfo] = useState({
         institution: "",
         degree: "",
-        graduation: ""
+        graduation: "",
+        expected: false,
     });
 
     let [expInfo, setExpInfo] = useState({
@@ -40,7 +41,12 @@ function App() {
         {displayed && (dataSubmitted===3) && <Output generalInfo={generalInfo} eduInfo={eduInfo} expInfo={expInfo}/>}
       </>
   )
-
+    /*
+    make logic for empty field to be displayed as "None"
+    make expected checkbox put a (expected) in bold after the graduation date if it is checked
+    make responsibilities text area store the paragraph into an array separaing its sentences by a "."
+    add logic to display the responsibilities sentences in bullet points
+     */
 }
 
 export default App
