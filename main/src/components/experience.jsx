@@ -4,7 +4,7 @@ import {useState} from "react";
 
 
 
-export default function Experience({ expInfo, setExpInfo }) {
+export default function Experience({ expInfo, setExpInfo, dataSubmitted, setDataSubmitted, displayed, setDisplayed }) {
     const [disabled, setDisabled] = useState(false);
     return (
         <>
@@ -56,8 +56,16 @@ export default function Experience({ expInfo, setExpInfo }) {
                            }
                            disabled={disabled} type="month"/>
                 </fieldset>
-                <button type="submit" onClick={() => setDisabled(true)} disabled={disabled} >Submit</button>
-                <button onClick={() => setDisabled(false)} >Edit</button>
+                <button type="submit" onClick={() => {
+                    setDisabled(true);
+                    setDataSubmitted(dataSubmitted + 1);
+                    setDisplayed(false);
+                }} disabled={disabled} >Submit</button>
+                <button onClick={() => {
+                    setDisabled(false);
+                    setDataSubmitted(dataSubmitted - 1);
+                    setDisplayed(false);
+                }} >Edit</button>
             </form>
         </>
     )

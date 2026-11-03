@@ -12,6 +12,7 @@ function App() {
         email: "",
         phone: ""
     });
+    let [dataSubmitted, setDataSubmitted] = useState(0);
 
     let [eduInfo, setEduInfo] = useState({
         institution: "",
@@ -31,11 +32,12 @@ function App() {
 
   return (
       <>
-        <General generalInfo={generalInfo} setGeneralInfo={setGeneralInfo}></General>
-        <Education eduInfo={eduInfo} setEduInfo={setEduInfo} />
-        <Experience expInfo={expInfo} setExpInfo={setExpInfo} />
+        <General generalInfo={generalInfo} setGeneralInfo={setGeneralInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed}></General>
+        <Education eduInfo={eduInfo} setEduInfo={setEduInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed} />
+        <Experience expInfo={expInfo} setExpInfo={setExpInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed}/>
         <button onClick={() => setDisplayed(true)}>Generate CV</button>
-        {displayed && <Output generalInfo={generalInfo} eduInfo={eduInfo} expInfo={expInfo}/>}
+
+        {displayed && (dataSubmitted===3) && <Output generalInfo={generalInfo} eduInfo={eduInfo} expInfo={expInfo}/>}
       </>
   )
 

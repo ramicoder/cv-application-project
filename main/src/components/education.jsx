@@ -4,10 +4,9 @@ import {useState} from "react";
 
 
 
-export default function Education({ eduInfo, setEduInfo }) {
+export default function Education({ eduInfo, setEduInfo, dataSubmitted, setDataSubmitted, displayed, setDisplayed }) {
 
     const [disabled, setDisabled] = useState(false);
-
     return (
         <>
             <form className="edu-form" onSubmit={(e) => e.preventDefault()}>
@@ -40,8 +39,16 @@ export default function Education({ eduInfo, setEduInfo }) {
                            }
                            disabled={disabled} type="date"/>
                 </fieldset>
-                <button type="submit" onClick={() => setDisabled(true)} disabled={disabled} >Submit</button>
-                <button onClick={() => setDisabled(false)} >Edit</button>
+                <button type="submit" onClick={() => {
+                    setDisabled(true);
+                    setDataSubmitted(dataSubmitted + 1);
+                    setDisplayed(false);
+                }} disabled={disabled} >Submit</button>
+                <button onClick={() => {
+                    setDisabled(false);
+                    setDataSubmitted(dataSubmitted - 1);
+                    setDisplayed(false);
+                }} >Edit</button>
             </form>
         </>
     )

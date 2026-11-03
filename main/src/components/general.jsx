@@ -4,7 +4,7 @@ import {useState} from "react";
 
 
 
-export default function General({ generalInfo, setGeneralInfo }) {
+export default function General({ generalInfo, setGeneralInfo, dataSubmitted, setDataSubmitted, displayed, setDisplayed }) {
 
     const [disabled, setDisabled] = useState(false);
     return (
@@ -43,9 +43,16 @@ export default function General({ generalInfo, setGeneralInfo }) {
                            disabled={disabled}
                            type="tel" placeholder="00123456789" minLength={10} maxLength={15} />
                 </fieldset>
-                <button type="submit" onClick={() => setDisabled(true)
-                } disabled={disabled} >Submit</button>
-                <button onClick={() => setDisabled(false)} >Edit</button>
+                <button type="submit" onClick={() => {
+                    setDisabled(true);
+                    setDataSubmitted(dataSubmitted + 1);
+                    setDisplayed(false);
+                }} disabled={disabled} >Submit</button>
+                <button onClick={() => {
+                    setDisabled(false);
+                    setDataSubmitted(dataSubmitted - 1);
+                    setDisplayed(false);
+                }} >Edit</button>
             </form>
         </>
     )
