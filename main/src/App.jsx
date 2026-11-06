@@ -36,17 +36,17 @@ function App() {
         <General generalInfo={generalInfo} setGeneralInfo={setGeneralInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed}></General>
         <Education eduInfo={eduInfo} setEduInfo={setEduInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed} />
         <Experience expInfo={expInfo} setExpInfo={setExpInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed}/>
-        <button onClick={() => setDisplayed(true)}>Generate CV</button>
+        <button onClick={() => {
+            if (dataSubmitted === 3) {
+                setDisplayed(true);
+            } else {
+                alert("Please submit all forms");
+            }
+        }}>Generate CV</button>
 
-        {displayed && (dataSubmitted===3) && <Output generalInfo={generalInfo} eduInfo={eduInfo} expInfo={expInfo}/>}
+        {displayed && <Output generalInfo={generalInfo} eduInfo={eduInfo} expInfo={expInfo}/>}
       </>
   )
-    /*
-    make logic for empty field to be displayed as "None"
-    make expected checkbox put a (expected) in bold after the graduation date if it is checked
-    make responsibilities text area store the paragraph into an array separaing its sentences by a "."
-    add logic to display the responsibilities sentences in bullet points
-     */
 }
 
 export default App

@@ -17,19 +17,26 @@ export default function Output({ generalInfo, eduInfo, expInfo }) {
                 <h1>{eduInfo.institution === "" ? "Education: None" : "Education"}</h1>
                 <p>
                     {eduInfo.institution === "" ? "" : `Institution: ${eduInfo.institution}`}<br></br>
-                    {eduInfo.institution === "" ? "" : `Degree: {eduInfo.degree}`} <br></br>
-                    {eduInfo.institution === "" ? "" :  `Graduation Date: ${eduInfo.graduation}`} <br></br>
-
+                    {eduInfo.degree === "" ? "" : `Degree: ${eduInfo.degree}`} <br></br>
+                    {eduInfo.graduation === "" ? "" :  `Graduation Date: ${eduInfo.graduation}`}
+                    {eduInfo.graduation && (eduInfo.expected ? <b> (Expected)</b> : "")}
+                    <br></br>
                 </p>
             </section>
             <section className="exp-section">
-                <h1>Experience</h1>
+                <h1>{expInfo.company === "" ? "Experience: None" : "Experience"}</h1>
                 <p>
-                    Company: {expInfo.company} <br></br>
-                    Role: {expInfo.role} <br></br>
-                    Responsibilities: {expInfo.responsibilities} <br></br>
-                    Start Date: {expInfo.start} <br></br>
-                    End Date: {expInfo.end} <br></br>
+                    {expInfo.company === "" ? "" : `Company: ${expInfo.company}`} <br></br>
+                    {expInfo.role === "" ? "" : `Role: ${expInfo.role}`} <br></br>
+                    {expInfo.responsibilities.length === 0 ? "" :
+                        <>Responsibilities:
+                            <ul>
+                                {expInfo.responsibilities.split('.').slice(0, -1).map((responsibility, index) => <li key={index}> {responsibility}<br></br></li>)}
+                            </ul>
+                        </>
+                    }
+                    {expInfo.start === "" ? "" : `Start Date: ${expInfo.start}`} <br></br>
+                    {expInfo.end === "" ? "" : `End Date: ${expInfo.end}`} <br></br>
                 </p>
             </section>
         </div>

@@ -50,7 +50,7 @@ export default function General({ generalInfo, setGeneralInfo, dataSubmitted, se
                 </fieldset>
                 <button type="submit"
                 disabled={disabled} >Submit</button>
-                <button onClick={() => {
+                <button type="button" onClick={() => {
                     setDisabled(false);
                     setDataSubmitted(dataSubmitted - 1);
                     setDisplayed(false);

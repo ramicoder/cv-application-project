@@ -43,7 +43,7 @@ export default function Experience({ expInfo, setExpInfo, dataSubmitted, setData
                                    responsibilities: e.target.value
                                })
                            }
-                              disabled={disabled} maxLength={200}> </textarea>
+                              disabled={disabled} maxLength={200}></textarea>
                     <label htmlFor="start-date">Start date</label>
                     <input value={expInfo.start} id="start-date" aria-labelledby="starting date"
                            onChange={(e) =>
@@ -64,7 +64,7 @@ export default function Experience({ expInfo, setExpInfo, dataSubmitted, setData
                            disabled={disabled} type="month"/>
                 </fieldset>
                 <button type="submit" disabled={disabled} >Submit</button>
-                <button onClick={() => {
+                <button type="button" onClick={() => {
                     setDisabled(false);
                     setDataSubmitted(dataSubmitted - 1);
                     setDisplayed(false);
