@@ -52,10 +52,10 @@ export default function Education({ eduInfo, setEduInfo, dataSubmitted, setDataS
                     </div>
                     <div className={"duo"}>
                         <label htmlFor="expected">Expected</label>
-                        <input type="checkbox" value={eduInfo.expected} id="expected" aria-labelledby="expected graduation date"
+                        <input type="checkbox" checked={eduInfo.expected} disabled={disabled} id="expected" aria-labelledby="expected graduation date"
                                onChange={(e) => setEduInfo({
                                    ...eduInfo,
-                                   expected: e.target.value
+                                   expected: e.target.checked
                                })}/>
                     </div>
                 </fieldset>
