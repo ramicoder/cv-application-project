@@ -8,9 +8,5 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.output {
-    background-color: lightgray;
-    min-width: 900px;
+    margin-top: 20px;
 }

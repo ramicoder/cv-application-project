@@ -3,41 +3,39 @@ import "../styles/output.css";
 export default function Output({ generalInfo, eduInfo, expInfo }) {
     return (
         <div className="output">
-            <h3>Resume</h3>
+            <h3>Résumé</h3>
             <hr></hr>
             <section className="general-section">
                 <h1>General</h1>
-                <p>
-                    Name: {generalInfo.name} <br></br>
-                    {generalInfo.email === "" ? "Email: None" : `Email: ${generalInfo.email}`}<br></br>
-                    {generalInfo.phone === ""? "Phone: None" : `Phone: ${generalInfo.phone}`} <br></br>
-                </p>
+                    <span>Name: {generalInfo.name}</span> <br></br>
+                    <span>{generalInfo.email === "" ? "Email: None" : `Email: ${generalInfo.email}`}</span><br></br>
+                    <span>{generalInfo.phone === ""? "Phone: None" : `Phone: ${generalInfo.phone}`}</span><br></br>
             </section>
+            <hr></hr>
             <section className="edu-section">
                 <h1>{eduInfo.institution === "" ? "Education: None" : "Education"}</h1>
-                <p>
-                    {eduInfo.institution === "" ? "" : `Institution: ${eduInfo.institution}`}<br></br>
-                    {eduInfo.degree === "" ? "" : `Degree: ${eduInfo.degree}`} <br></br>
-                    {eduInfo.graduation === "" ? "" :  `Graduation Date: ${eduInfo.graduation}`}
-                    {eduInfo.graduation && (eduInfo.expected ? <b> (Expected)</b> : "")}
+
+                    <span>{eduInfo.institution === "" ? "" : `Institution: ${eduInfo.institution}`}</span><br></br>
+                    <span>{eduInfo.degree === "" ? "" : `Degree: ${eduInfo.degree}`}</span><br></br>
+                    <span>{eduInfo.graduation === "" ? "" :  `Graduation Date: ${eduInfo.graduation}`}</span>
+                    <span>{eduInfo.graduation && (eduInfo.expected ? <b>&ensp;(Expected)</b> : "")}</span>
                     <br></br>
-                </p>
             </section>
+            <hr></hr>
             <section className="exp-section">
                 <h1>{expInfo.company === "" ? "Experience: None" : "Experience"}</h1>
-                <p>
-                    {expInfo.company === "" ? "" : `Company: ${expInfo.company}`} <br></br>
-                    {expInfo.role === "" ? "" : `Role: ${expInfo.role}`} <br></br>
-                    {expInfo.responsibilities.length === 0 ? "" :
-                        <>Responsibilities:
-                            <ul>
-                                {expInfo.responsibilities.split('.').slice(0, -1).map((responsibility, index) => <li key={index}> {responsibility}<br></br></li>)}
-                            </ul>
-                        </>
-                    }
-                    {expInfo.start === "" ? "" : `Start Date: ${expInfo.start}`} <br></br>
-                    {expInfo.end === "" ? "" : `End Date: ${expInfo.end}`} <br></br>
-                </p>
+                    <span>{expInfo.company === "" ? "" : `Company: ${expInfo.company}`}</span><br></br>
+                    <span>{expInfo.role === "" ? "" : `Role: ${expInfo.role}`}</span><br></br>
+                <span>{expInfo.responsibilities.length === 0 ? "" :
+                    <>Responsibilities:
+                        <ul>
+                            {expInfo.responsibilities.split('.').slice(0, -1).map((responsibility, index) => <li key={index}> {responsibility}<br></br></li>)}
+                        </ul>
+                    </>
+                }</span>
+                <br></br>
+                <span>{expInfo.start === "" ? "" : `Start Date: ${expInfo.start}`}</span><br></br>
+                <span>{expInfo.end === "" ? "" : `End Date: ${expInfo.end}`}</span><br></br>
             </section>
         </div>
     )

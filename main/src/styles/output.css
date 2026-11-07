@@ -1,0 +1,36 @@
+@import url('https://cdn.jsdelivr.net/gh/vsalvino/computer-modern@main/fonts/serif.css');
+
+.output {
+    min-width: 900px;
+    height: 86vh;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: 'Computer Modern Serif', Georgia, serif;
+    text-align: justify;
+    text-justify: inter-word;
+    padding: 10px;
+    border: 3px solid black;
+}
+
+h3, h1 {
+    text-align: center;
+}
+
+span {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+hr {
+    border: 1px solid black;
+    width: 100%
+}
+
+ul {
+    height: 6rem;
+    overflow-y: scroll;
+}
+

@@ -41,6 +41,7 @@ function App() {
         </div>
 
           <div className="output-stuff">
+              {displayed && <Output generalInfo={generalInfo} eduInfo={eduInfo} expInfo={expInfo}/>}
               <button className={"generate-btn"} onClick={() => {
                   if (dataSubmitted === 3) {
                       setDisplayed(true);
@@ -48,8 +49,6 @@ function App() {
                       alert("Please submit all forms");
                   }
               }}>Generate CV</button>
-
-              {displayed && <Output generalInfo={generalInfo} eduInfo={eduInfo} expInfo={expInfo}/>}
           </div>
       </div>
   )
