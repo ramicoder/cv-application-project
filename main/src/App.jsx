@@ -32,20 +32,26 @@ function App() {
     let [displayed, setDisplayed] = useState(false);
 
   return (
-      <>
-        <General generalInfo={generalInfo} setGeneralInfo={setGeneralInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed}></General>
-        <Education eduInfo={eduInfo} setEduInfo={setEduInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed} />
-        <Experience expInfo={expInfo} setExpInfo={setExpInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed}/>
-        <button onClick={() => {
-            if (dataSubmitted === 3) {
-                setDisplayed(true);
-            } else {
-                alert("Please submit all forms");
-            }
-        }}>Generate CV</button>
+      <div className="app">
 
-        {displayed && <Output generalInfo={generalInfo} eduInfo={eduInfo} expInfo={expInfo}/>}
-      </>
+        <div className="forms">
+            <General generalInfo={generalInfo} setGeneralInfo={setGeneralInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed}></General>
+            <Education eduInfo={eduInfo} setEduInfo={setEduInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed} />
+            <Experience expInfo={expInfo} setExpInfo={setExpInfo} dataSubmitted={dataSubmitted} setDataSubmitted={setDataSubmitted} displayed={displayed} setDisplayed={setDisplayed}/>
+        </div>
+
+          <div className="output-stuff">
+              <button className={"generate-btn"} onClick={() => {
+                  if (dataSubmitted === 3) {
+                      setDisplayed(true);
+                  } else {
+                      alert("Please submit all forms");
+                  }
+              }}>Generate CV</button>
+
+              {displayed && <Output generalInfo={generalInfo} eduInfo={eduInfo} expInfo={expInfo}/>}
+          </div>
+      </div>
   )
 }
 

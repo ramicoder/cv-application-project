@@ -18,57 +18,69 @@ export default function Experience({ expInfo, setExpInfo, dataSubmitted, setData
             }}>
                 <fieldset>
                     <legend>Experience</legend>
-                    <label htmlFor="company">Company</label>
-                    <input value={expInfo.company} id="company" minLength={2} maxLength={30}
-                           onChange={(e) =>
-                               setExpInfo({
-                                   ...expInfo,
-                                   company: e.target.value
-                               })
-                           } disabled={disabled} type="text" aria-labelledby="company" placeholder="Amazon" />
-                    <label htmlFor="role">Role</label>
-                    <input value={expInfo.role} id="role" aria-labelledby="role"
-                           onChange={(e) =>
-                               setExpInfo({
-                                   ...expInfo,
-                                   role: e.target.value
-                               })
-                           }
-                           disabled={disabled} type="text" placeholder="Junior Backend Software Engineer" minLength={2} maxLength={50}/>
-                    <label htmlFor="responsibilities">Responsibilities</label>
-                    <textarea value={expInfo.responsibilities} id="responsibilities" aria-labelledby="responsibilities"
-                           onChange={(e) =>
-                               setExpInfo({
-                                   ...expInfo,
-                                   responsibilities: e.target.value
-                               })
-                           }
-                              disabled={disabled} maxLength={200}></textarea>
-                    <label htmlFor="start-date">Start date</label>
-                    <input value={expInfo.start} id="start-date" aria-labelledby="starting date"
-                           onChange={(e) =>
-                               setExpInfo({
-                                   ...expInfo,
-                                   start: e.target.value
-                               })
-                           }
-                           disabled={disabled} type="month"/>
-                    <label htmlFor="end-date">End date</label>
-                    <input value={expInfo.end} id="end-date" aria-labelledby="ending date"
-                           onChange={(e) =>
-                               setExpInfo({
-                                   ...expInfo,
-                                   end: e.target.value
-                               })
-                           }
-                           disabled={disabled} type="month"/>
+                    <div className={"duo"}>
+                        <label htmlFor="company">Company:</label>
+                        <input value={expInfo.company} id="company" minLength={2} maxLength={30}
+                               onChange={(e) =>
+                                   setExpInfo({
+                                       ...expInfo,
+                                       company: e.target.value
+                                   })
+                               } disabled={disabled} type="text" aria-labelledby="company" placeholder="Amazon" />
+                    </div>
+                    <div className={"duo"}>
+                        <label htmlFor="role">Role:</label>
+                        <input value={expInfo.role} id="role" aria-labelledby="role"
+                               onChange={(e) =>
+                                   setExpInfo({
+                                       ...expInfo,
+                                       role: e.target.value
+                                   })
+                               }
+                               disabled={disabled} type="text" placeholder="Junior Backend Software Engineer" minLength={2} maxLength={50}/>
+                    </div>
+                    <div className={"duo-col"}>
+                        <label htmlFor="responsibilities">Responsibilities:</label>
+                        <textarea value={expInfo.responsibilities} id="responsibilities" aria-labelledby="responsibilities"
+                                  onChange={(e) =>
+                                      setExpInfo({
+                                          ...expInfo,
+                                          responsibilities: e.target.value
+                                      })
+                                  }
+                                  disabled={disabled} maxLength={200}></textarea>
+                    </div>
+                    <div className={"duo"}>
+                        <label htmlFor="start-date">Start date:</label>
+                        <input value={expInfo.start} id="start-date" aria-labelledby="starting date"
+                               onChange={(e) =>
+                                   setExpInfo({
+                                       ...expInfo,
+                                       start: e.target.value
+                                   })
+                               }
+                               disabled={disabled} type="month"/>
+                    </div>
+                    <div className={"duo"}>
+                        <label htmlFor="end-date">End date:</label>
+                        <input value={expInfo.end} id="end-date" aria-labelledby="ending date"
+                               onChange={(e) =>
+                                   setExpInfo({
+                                       ...expInfo,
+                                       end: e.target.value
+                                   })
+                               }
+                               disabled={disabled} type="month"/>
+                    </div>
                 </fieldset>
-                <button type="submit" disabled={disabled} >Submit</button>
-                <button type="button" onClick={() => {
-                    setDisabled(false);
-                    setDataSubmitted(dataSubmitted - 1);
-                    setDisplayed(false);
-                }} >Edit</button>
+                <div className={"buttons"}>
+                    <button type="submit" className={"submit-btn"} disabled={disabled} >Submit</button>
+                    <button type="button" onClick={() => {
+                        setDisabled(false);
+                        setDataSubmitted(dataSubmitted - 1);
+                        setDisplayed(false);
+                    }} >Edit</button>
+                </div>
             </form>
         </>
     )
